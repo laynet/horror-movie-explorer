@@ -19,7 +19,7 @@ const useSearchMovies = () => {
   };
 
   const selectMovie = () => {
-    console.log("aoerb;oaeirbn")
+    console.log("TODO - movie card")
   }
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
     };
   
     const handleInput = async () => {
-      console.log('valor del input', search);
+      console.log('query = ', search);
       try {
         const movies = await searchMovies(search);
         setMovies(movies);
@@ -46,7 +46,10 @@ function App() {
     <>
     <div>
       <div className="search">
-        <input type="text" value={search} onChange={onChangeHandler}/>
+        <input 
+        type="text" 
+        value={search} 
+        onChange={onChangeHandler}/>
         <button onClick={handleInput}>search</button>
       </div>
       <ul>

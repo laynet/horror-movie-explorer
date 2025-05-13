@@ -1,0 +1,6 @@
+https://stackoverflow.com/questions/71392253/get-input-value-with-react-hooks-to-search-on-omdb-api
+
+
+https://www.omdbapi.com/
+
+can use useEffect for useSearch???
