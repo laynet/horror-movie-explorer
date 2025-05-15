@@ -8,6 +8,12 @@ function App() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [search, setSearch] = useState('');
+
+    const onChangeHandler = e => {
+        setSearch(e.target.value)
+        console.log("onChangeHandler ", search)
+      };
   
     const handleClick = async (searchValue) => {
       setLoading(true);
@@ -33,13 +39,19 @@ function App() {
   
     return (
       <div>
+        <input 
+        type="text" 
+        value={search} 
+        onChange={onChangeHandler}/>
         <button onClick={handleClick} disabled={loading}>
           {loading ? 'Loading...' : 'Fetch Data'}
         </button>
   
         {error && <p>Error: {error.message}</p>}
         {loading && <p>Loading data...</p>}
+        <h1>Search = {search}</h1>
         {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+        
       </div>
     );
 }
