@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import MovieCard from './components/MovieCard';
 
 
 const API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODBlMWQ1ZGE2OThmZjU3YTlhNTlhNzQ1MGM3NGM1OSIsIm5iZiI6MTYzMjI3MDQ2My4yMDYsInN1YiI6IjYxNGE3ODdmYTZkZGNiMDA4YzAzZWY2MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uc71P0peFrj9h7CBKUNqCQahQ3hNx3MmPFcTP1MXOjY';
@@ -20,6 +21,8 @@ function App() {
     const [error, setError] = useState(null);
     const [search, setSearch] = useState('');
     const [horrorMovieList, setHorrorMovieList] = useState([]);
+    const [display, setDisplay] = useState(false);
+    const [currentMovie, setCurrentMovie] = useState(null)
     const fetchData = async (query = '') => {
         try {
             // const endpoint = `${API_BASE_URL}/discover/movie`;
@@ -62,8 +65,14 @@ const filterMovies = (movieList) => {
     setHorrorMovieList(list)
 }
 
-const displayMovie = () => {
-    console.log("clicked")
+const displayMovie = (value) => {
+    console.log("%%%%%%",value)
+    setDisplay(true)
+    setCurrentMovie(value)
+}
+
+const closeDisplay = () => {
+    setDisplay(false)
 }
 
 
@@ -82,6 +91,8 @@ const displayMovie = () => {
   
     return (
       <div>
+        {!display &&
+        <div>
          <input 
         type="text" 
         value={search} 
@@ -90,16 +101,26 @@ const displayMovie = () => {
         <button onClick={handleClick}  >
           {/* {loading ? 'Loading...' : 'Fetch Data'} */}
         </button>
+        </div>}
+
         {/*
         {error && <p>Error: {error.message}</p>}
         {loading && <p>Loading data...</p>}*/}
+        {!display &&
         <ul>{horrorMovieList.map((horrorMovie) => (
-            <li key={horrorMovie.id}onClick={displayMovie}>{horrorMovie.title}</li> 
-        ))}</ul>
+            <li key={horrorMovie.id} onClick={() => displayMovie(horrorMovie)} >{horrorMovie.title}</li> 
+        ))}</ul>}
+        {display && 
+        <div>
+            <MovieCard currentMovie={currentMovie} closeDisplay={closeDisplay}/>
+        {/* <h1>DISPLAY</h1>
+        <p>{currentMovie.title}</p>
+        <button onClick={closeDisplay}  >
+          back to list
+        </button> */}
+        </div>
+        }
 
-        {/* {movieList.map((movie) => (
-            movie.genre_ids === 27 ? <h1>{movie.title}</h1> : <h1>Not a horror movie, idiot</h1>
-        ))} */}
       </div>
     );
 }
