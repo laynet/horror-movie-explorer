@@ -39,7 +39,6 @@ function App() {
                 return;
               }
             setMovieList(data.results || [])
-            // console.log(data.results[0].genre_ids)
             console.log("!!!!",data.results)
         }catch(error) {
             console.log("!!!!!!!!!",error)
@@ -66,7 +65,6 @@ const filterMovies = (movieList) => {
 }
 
 const displayMovie = (value) => {
-    console.log("%%%%%%",value)
     setDisplay(true)
     setCurrentMovie(value)
 }
@@ -76,52 +74,59 @@ const closeDisplay = () => {
 }
 
 
-    const onChangeHandler = (e) => {
-        setSearch(e.target.value)
-        console.log("onChangeHandler ")
-        fetchData(search);
-    };
+const onChangeHandler = (e) => {
+    setSearch(e.target.value)
+    console.log("onChangeHandler ")
+    fetchData(search);
+};
 
-    const handleClick = () => {
+const handleClick = () => {
 
-        filterMovies(movieList)
-        
-    }
+    filterMovies(movieList)
+    
+}
 
   
     return (
-      <div>
+      <>
+        <header className='header'>
+            <h1 className='header-title'>Horror Movie Explorer</h1>
+        </header>
+    <div className='main'>
+        <div className='search-container'>
+            <input 
+            type="text" 
+            value={search} 
+            onChange={onChangeHandler}
+            className='search'
+            />
+            <button onClick={handleClick} className='btn' >
+                Search
+            {/* {loading ? 'Loading...' : 'Fetch Data'} */}
+            </button>
+        </div>
         {!display &&
-        <div>
-         <input 
-        type="text" 
-        value={search} 
-        onChange={onChangeHandler}
-        />
-        <button onClick={handleClick}  >
-          {/* {loading ? 'Loading...' : 'Fetch Data'} */}
-        </button>
-        </div>}
-
-        {/*
-        {error && <p>Error: {error.message}</p>}
-        {loading && <p>Loading data...</p>}*/}
-        {!display &&
-        <ul>{horrorMovieList.map((horrorMovie) => (
+        <ul className='movie-list'>{horrorMovieList.map((horrorMovie) => (
             <li key={horrorMovie.id} onClick={() => displayMovie(horrorMovie)} >{horrorMovie.title}</li> 
         ))}</ul>}
+        
+        <div className='main-content'>
+        
+     
         {display && 
-        <div>
-            <MovieCard currentMovie={currentMovie} closeDisplay={closeDisplay}/>
-        {/* <h1>DISPLAY</h1>
-        <p>{currentMovie.title}</p>
-        <button onClick={closeDisplay}  >
-          back to list
-        </button> */}
-        </div>
+            <MovieCard currentMovie={currentMovie} closeDisplay={closeDisplay} />
         }
+       
+        
+
+        </div>
+        
+        <footer className='footer'>
+           <p>lorem ipsum</p> 
+        </footer>
 
       </div>
+      </>
     );
 }
 
