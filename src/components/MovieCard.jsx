@@ -6,7 +6,7 @@ const MovieCard = ({ currentMovie: {title, poster_path, overview, release_date},
     <div className='display-container'>
         <h1>{title}</h1>
         <h3>{release_date}</h3>
-        <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
+        <img className='movie-poster' src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
         <p>{overview}</p>
         <button onClick={closeDisplay}  className='btn'>
           back to list

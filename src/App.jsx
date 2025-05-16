@@ -89,10 +89,11 @@ const handleClick = () => {
   
     return (
       <>
+      <div className='main'>
         <header className='header'>
             <h1 className='header-title'>Horror Movie Explorer</h1>
         </header>
-    <div className='main'>
+    
         <div className='search-container'>
             <input 
             type="text" 
@@ -101,7 +102,7 @@ const handleClick = () => {
             className='search'
             />
             <button onClick={handleClick} className='btn' >
-                Search
+               <p>Search</p> 
             {/* {loading ? 'Loading...' : 'Fetch Data'} */}
             </button>
         </div>
