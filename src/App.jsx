@@ -107,9 +107,12 @@ const handleClick = () => {
             </button>
         </div>
         {!display &&
+
+        <div className="movie-list-container">
         <ul className='movie-list'>{horrorMovieList.map((horrorMovie) => (
             <li key={horrorMovie.id} onClick={() => displayMovie(horrorMovie)} >{horrorMovie.title}</li> 
-        ))}</ul>}
+        ))}</ul>
+        </div>}
         
         <div className='main-content'>
         
