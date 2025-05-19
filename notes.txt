@@ -4,7 +4,7 @@ https://stackoverflow.com/questions/71392253/get-input-value-with-react-hooks-to
 https://www.omdbapi.com/
 
 can use useEffect for useSearch???
-
+https://developer.themoviedb.org/docs/getting-started
 
 "id": 27,
       "name": "Horror"

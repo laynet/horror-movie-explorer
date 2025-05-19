@@ -9,13 +9,10 @@ body {
   
 }
 
-/* p {
-  margin: 0;
-} */
+
 
 .main {
-  /* width: 100%;
-  min-height: 100vh;   */
+
   background-image: url("/src/assets/horror.jpg");
   background-repeat:no-repeat; 
   background-position: center;
@@ -41,8 +38,6 @@ footer {
   color: red;
   font-size: 2rem;
   line-height: 2.25rem;
-  /* media query this
-  font-size: 6rem; */
 }
 
 .search-container {
@@ -78,15 +73,9 @@ footer {
   text-align: center;
   list-style-type: none;
   cursor: pointer;
-  /* width: 50%;
-  justify-content: center; */
-  /* padding: 1rem;
-  margin: 1rem; */
 }
 
 .main-content {
-  
-  
   padding: 2rem;
 }
 .display-container {
@@ -94,15 +83,16 @@ footer {
   flex-direction: column;
   background-color: #FCFBF0;
   border-radius: 20px;
-  /* justify-content: center; */
   text-align: center;
   padding: 1rem;
-  /* width: 50%; */
-
 }
 
 .movie-poster {
   width: 100%;
+}
+
+footer {
+  padding: 2rem;
 }
 
 

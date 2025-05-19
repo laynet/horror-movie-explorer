@@ -25,7 +25,6 @@ function App() {
     const [currentMovie, setCurrentMovie] = useState(null)
     const fetchData = async (query = '') => {
         try {
-            // const endpoint = `${API_BASE_URL}/discover/movie`;
             const endpoint = `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`;
 
             const response = await fetch(endpoint, API_OPTIONS);
@@ -39,9 +38,8 @@ function App() {
                 return;
               }
             setMovieList(data.results || [])
-            console.log("!!!!",data.results)
         }catch(error) {
-            console.log("!!!!!!!!!",error)
+            console.log(error)
         }finally {
             setIsLoading(false);
           }
@@ -51,8 +49,7 @@ function App() {
 
 const filterMovies = (movieList) => {
     let list = []
-    console.log("MOVIE LIST", movieList)
-    console.log("MOVIE LIST LENGTH", movieList.length)
+
     for(let i = 0; i < movieList.length; i++){
         let curMovie = movieList[i]
         let genreList = curMovie.genre_ids
@@ -76,7 +73,6 @@ const closeDisplay = () => {
 
 const onChangeHandler = (e) => {
     setSearch(e.target.value)
-    console.log("onChangeHandler ")
     fetchData(search);
 };
 
@@ -103,7 +99,6 @@ const handleClick = () => {
             />
             <button onClick={handleClick} className='btn' >
                <p>Search</p> 
-            {/* {loading ? 'Loading...' : 'Fetch Data'} */}
             </button>
         </div>
         {!display &&
@@ -126,7 +121,7 @@ const handleClick = () => {
         </div>
         
         <footer className='footer'>
-           <p>lorem ipsum</p> 
+           <h3>Rhea Stokes INST630</h3> 
         </footer>
 
       </div>
